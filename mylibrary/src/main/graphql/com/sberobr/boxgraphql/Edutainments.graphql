@@ -1,0 +1,75 @@
+query EdutainmentList($limit: Int!, $offset: Int!) {
+    edutainments(limit: $limit, offset: $offset) {
+        about
+        attachment
+        id
+        name
+        school_id
+        type
+        school {
+            title
+            id
+            description
+        }
+    }
+}
+
+query EdutainmentTopic($limit: Int!, $offset: Int!) {
+    edutainment_topic(limit: $limit, offset: $offset) {
+        edutainment_id
+        topic_id
+    }
+}
+
+query EdutainmentTopicAggregate($limit: Int!, $offset: Int!) {
+    edutainment_topic_aggregate(limit: $limit, offset: $offset) {
+        nodes {
+            edutainment_id
+            topic_id
+        }
+        aggregate {
+            count
+        }
+    }
+}
+query EdutainmentAggregate($limit: Int!, $offset: Int!) {
+    edutainments_aggregate(limit: $limit, offset: $offset) {
+        aggregate {
+            count
+        }
+        nodes {
+            about
+            attachment
+            id
+            name
+            school_id
+            type
+        }
+    }
+}
+
+query EdutainmentTopicByPk($topic_id: uuid!, $edutainment_id: uuid!) {
+    edutainment_topic_by_pk(topic_id: $topic_id, edutainment_id: $edutainment_id) {
+        edutainment_id
+        topic_id
+        edutainment {
+            id
+            about
+            attachment
+            name
+            school_id
+            type
+        }
+    }
+}
+
+query EdutainmentByPk($id: uuid!) {
+    edutainments_by_pk(id: $id) {
+        about
+        attachment
+        id
+        name
+        school_id
+        type
+    }
+}

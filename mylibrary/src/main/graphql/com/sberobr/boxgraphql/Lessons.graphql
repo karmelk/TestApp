@@ -1,0 +1,17 @@
+query LessonList($limit: Int!, $offset: Int!) {
+    lesson_results(offset: $limit, limit: $offset) {
+        id
+        lesson_id
+        user_id
+        results
+        lesson {
+            about
+            course_id
+            duration
+            id
+            title
+            questions
+            url
+        }
+    }
+}

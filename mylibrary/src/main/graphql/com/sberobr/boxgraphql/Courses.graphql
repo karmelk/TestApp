@@ -1,0 +1,72 @@
+query CoursesList {
+    courses {
+        about
+        age
+        description
+        id
+        level
+        price
+        title
+        school_id
+    }
+}
+query CourseAccesses {
+    course_accesses {
+        course_id
+        creator_id
+        id
+        user_id
+        reason
+        course {
+            about
+            age
+            updated_at
+            title
+            school_id
+            price
+            level
+            description
+            id
+        }
+    }
+}
+query CourseTopic {
+    course_topic {
+        course_id
+        topic_id
+    }
+}
+query CourseAccessesAggregate($limit: Int!, $offset: Int!) {
+    course_accesses_aggregate(limit: $limit, offset: $offset) {
+        nodes {
+            course_id
+            creator_id
+            id
+            reason
+            user_id
+        }
+        aggregate {
+            count
+        }
+    }
+}
+
+query CourseAccessesByPk($id: uuid!) {
+    course_accesses_by_pk(id: $id) {
+        course_id
+        id
+        reason
+        user_id
+        creator_id
+        course {
+            about
+            age
+            title
+            school_id
+            price
+            level
+            id
+            description
+        }
+    }
+}

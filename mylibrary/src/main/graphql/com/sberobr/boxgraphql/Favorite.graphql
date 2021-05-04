@@ -1,0 +1,55 @@
+query FavoritesList($limit: Int!, $offset: Int!) {
+    favorites(offset: $limit, limit: $offset) {
+        course_id
+        user_id
+        course {
+            about
+            age
+            description
+            id
+            level
+            price
+            title
+            school_id
+        }
+    }
+}
+
+query  FavoritesAggregate($limit: Int!, $offset: Int!) {
+    favorites_aggregate(offset: $limit, limit: $offset) {
+        aggregate {
+            count
+        }
+        nodes {
+            user_id
+            course_id
+            course {
+                about
+                age
+                description
+                id
+                level
+                price
+                title
+                school_id
+            }
+        }
+    }
+}
+
+query  FavoritesByPk($course_id: uuid!, $user_id: uuid!) {
+    favorites_by_pk(course_id: $course_id, user_id: $user_id) {
+        course_id
+        user_id
+        course {
+            about
+            age
+            description
+            id
+            level
+            price
+            title
+            school_id
+        }
+    }
+}
