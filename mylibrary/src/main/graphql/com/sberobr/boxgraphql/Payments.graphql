@@ -1,0 +1,29 @@
+query Payments($limit: Int!, $offset: Int!) {
+    payments(limit: $limit, offset: $offset) {
+        id
+        price
+        user_id
+    }
+}
+
+query PaymentsAggregate($limit: Int!, $offset: Int!) {
+    payments_aggregate(limit: $limit, offset: $offset) {
+        aggregate {
+            count
+        }
+        nodes {
+            id
+            price
+            user_id
+        }
+    }
+}
+query PaymentsByPk($id: uuid!) {
+    payments_by_pk(id:$id) {
+        id
+        price
+        user_id
+    }
+}
+
+
